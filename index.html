@@ -38,20 +38,21 @@
     }
 
     button {
-      background: #ff69b4;
+      background: linear-gradient(135deg, #ff69b4, #ff85c1);
       color: white;
       border: none;
       padding: 1rem 2.5rem;
       border-radius: 999px;
       font-size: 1.3rem;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.2s ease;
-      appearance: button;
+      box-shadow: 0 0 15px #ff69b4aa;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     button:hover {
-      background: #ff85c1;
       transform: scale(1.05);
+      box-shadow: 0 0 20px #ff85c1aa;
     }
 
     #status {
